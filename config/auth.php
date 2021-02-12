@@ -45,6 +45,16 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'librarians',
+        ],
     ],
 
     /*
@@ -70,10 +80,16 @@ return [
             'model' => App\Models\Student::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'librarians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Librarian::class,
+        ],
+
     ],
 
     /*
