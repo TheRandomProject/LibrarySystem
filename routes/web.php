@@ -24,6 +24,15 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::prefix('/admin')
+    ->middleware('admins')
+    ->group(function () {
+    });
+
+Route::prefix('/librarian')
+    ->middleware('librarians')
+    ->group(function () {
+    });
 Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
