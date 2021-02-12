@@ -33,38 +33,6 @@
                 @else
 
                 @endif
-                {{-- @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Apps <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        </div>
-
-                    </li>
-                    @if (Auth::user()->can('view-any', Spatie\Permission\Models\Role::class) ||
-                        Auth::user()->can('view-any', Spatie\Permission\Models\Permission::class))
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            Access Management <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @can('view-any', Spatie\Permission\Models\Role::class)
-                            <a class="dropdown-item" href="{{ route('roles.index') }}">Roles</a>
-                            @endcan
-
-                            @can('view-any', Spatie\Permission\Models\Permission::class)
-                            <a class="dropdown-item" href="{{ route('permissions.index') }}">Permissions</a>
-                            @endcan
-                        </div>
-                    </li>
-                    @endif
-                @endauth --}}
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -73,7 +41,7 @@
                 @guest
                     @if (Auth::guard('admin')->check())
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-capitalize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                {{Auth::guard('admin')->user()->username}} <span class="caret"></span>
                             </a>
 
