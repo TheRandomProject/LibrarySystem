@@ -12,7 +12,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                @auth
+                @if(Auth::guard('admin')->check())
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Borrows</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Users <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a href="#" class="dropdown-item">Librarian</a>
+                            <a href="#" class="dropdown-item">Student</a>
+                        </div>
+                    </li>
+                @elseif(Auth::guard('librarian')->check())
+
+                @else
+
+                @endif
+                {{-- @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
                     </li>
@@ -43,7 +64,7 @@
                         </div>
                     </li>
                     @endif
-                @endauth
+                @endauth --}}
             </ul>
 
             <!-- Right Side Of Navbar -->
