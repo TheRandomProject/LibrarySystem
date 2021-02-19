@@ -27,9 +27,12 @@
                             <td>{{$book->quantity}}</td>
                             <td>{{$book->genre->name}}</td>
                             <td>{{$book->published}}</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm">Edit</button>
-                                <button class="btn btn-danger btn-sm">Delete</button>
+                            <td class="text-center">
+                                {!!Form::open(['action' => ['BooksController@destroy', $book->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    <a href="/admin/books/{{$book->id}}/edit" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil"></i></a>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
+                                {!!Form::close()!!}
                             </td>
                         </tr>
                         @endforeach

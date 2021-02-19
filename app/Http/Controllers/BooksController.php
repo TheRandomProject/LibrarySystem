@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Storage;
 
 class BooksController extends Controller
 {
@@ -128,6 +129,14 @@ class BooksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = book::find($id);
+
+        //Check if book exists before deleting
+        if (!isset($book)) {
+            return redirect()->route('admin.books.index')->with('error', 'No Book Found');
+        }
+
+        $book->delete();
+        return redirect()->route('admin.books.index')->with('success', 'Book Removed');
     }
 }
