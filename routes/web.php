@@ -49,8 +49,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::name('admin.')->group(function () {
         Route::resource('books', BooksController::class);
     });
+
+    Route::name('admin.')->group(function () {
+        Route::resource('/students', StudentsController::class);
+    });
     Route::resource('/borroweds', BorrowedsController::class);
-    Route::resource('/students', StudentsController::class);
     Route::resource('/librarians', LibrariansController::class);
 });
 
