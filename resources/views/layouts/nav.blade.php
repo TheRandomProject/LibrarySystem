@@ -18,6 +18,9 @@
 
                 @elseif(Auth::guard('admin')->check())
                     <li class="nav-item">
+                        <a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/admin/books" class="nav-link">Books</a>
                     </li>
                     <li class="nav-item">

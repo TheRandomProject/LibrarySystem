@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Image;
+use DB;
 use App\Models\Book;
 use App\Models\Genre;
-use Illuminate\Http\Request;
-use Storage;
+
+
 
 class BooksController extends Controller
 {
@@ -95,7 +99,6 @@ class BooksController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -106,7 +109,21 @@ class BooksController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book   =   Book::find($id);
+        $genre  =   Genre::all();
+
+
+
+
+        if (!isset($book)) {
+            return redirect()->route('admin.books.edit')->with('error', 'No Book Found');
+        }
+
+        if (!auth()->guard('admin')->check()) {
+            return redirect()->back()->with('error', 'Unauthorized Book');
+        }
+
+        return view('book.edit', compact('book', 'genre',));
     }
 
     /**
@@ -118,7 +135,37 @@ class BooksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::find($id);
+        // Handle File Upload
+        if ($request->hasFile('cover_image')) {
+            // Get filename with the extension
+            $filenameWithExt = $request->file('cover_image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $request->file('cover_image')->getClientOriginalExtension();
+            // Filename to store
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            // Upload Image
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);
+
+            if ($book->cover_image != 'noimage.jpg') {
+                // Delete Image
+                Storage::delete('public/cover_images/' . $book->cover_image);
+            }
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->quantity = $request->input('quantity');
+        $book->published = $request->input('published');
+        $book->genre_id = $request->input('genre');
+        $book->cover_image = $fileNameToStore;
+        $book->save();
+
+        return redirect()->route('admin.books.index')->with('success', 'Book Update');
     }
 
     /**
