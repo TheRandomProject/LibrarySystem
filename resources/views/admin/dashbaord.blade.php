@@ -31,7 +31,8 @@
                     <div class="row">
                         <div class="col-4 col-md-4">
                             <div class="card-icon">
-                                <i class="fal fa-reply"></i>                           </div>
+                                <i class="fal fa-reply"></i>
+                            </div>
                         </div>
                         <div class="col-7 col-md-8">
                             <p class="card-number">{{count($borroweds)}}</p>
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                     <hr>
-                    <a href="#">View</a>
+                    <a href="{{route('admin.students.index')}}">View</a>
                 </div>
             </div>
         </div>
@@ -141,7 +142,7 @@
                     </tr>
                     @endforeach
                     <tr>
-                        <th colspan="7" class="text-center"><a href="{{route('admin.books.index')}}">View</a></th>
+                        <th colspan="7" class="text-center"><a href="{{route('admin.students.index')}}">View</a></th>
                     </tr>
                 @else
                     <tr>
