@@ -18,7 +18,10 @@ class StudentSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Grumbles',
+            'username' => 'Grumbles',
+            'firstname' => 'oyuioyuio',
+            'lastname' => 'vtyvty',
+            'contact' => '789789',
             'password' => Hash::make('password'),
             'email' =>  'student@student.com'
 

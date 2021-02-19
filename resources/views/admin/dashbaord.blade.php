@@ -78,7 +78,25 @@
                   </tr>
                 </thead>
                 <tbody>
-
+                    @if(count($books) > 0)
+                        @foreach($books as $book)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$book->title}}</td>
+                            <td>{{$book->author}}</td>
+                            <td>{{$book->quantity}}</td>
+                            <td>{{$book->genre->name}}</td>
+                            <td>{{$book->published}}</td>
+                        </tr>
+                        @endforeach
+                        <tr>
+                            <th colspan="7" class="text-center"><a href="{{route('admin.books.index')}}">View</a></th>
+                        </tr>
+                    @else
+                        <tr>
+                            <th colspan="7" class="text-center bg-danger text-white"> No Result </th>
+                        </tr>
+                    @endif
                 </tbody>
               </table>
         </div>
@@ -109,10 +127,27 @@
                     <th>Lastname</th>
                     <th>Email</th>
                     <th>Contact</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
+                @if (count($students) > 0)
+                    @foreach($students as $student)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$student->firstname}}</td>
+                        <td>{{$student->lastname}}</td>
+                        <td>{{$student->email}}</td>
+                        <td>{{$student->contact}}</td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <th colspan="7" class="text-center"><a href="{{route('admin.books.index')}}">View</a></th>
+                    </tr>
+                @else
+                    <tr>
+                        <th colspan="7" class="text-center bg-danger text-white"> No Result </th>
+                    </tr>
+                @endif
 
                 </tbody>
               </table>
