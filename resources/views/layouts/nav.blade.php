@@ -18,7 +18,7 @@
 
                 @elseif(Auth::guard('admin')->check())
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Books</a>
+                        <a href="/admin/books" class="nav-link">Books</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Borrows</a>

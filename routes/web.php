@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\BooksController;
+use App\Http\Controllers\BorrowedsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LibrariansController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\StudentsController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -41,6 +45,24 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    Route::name('admin.')->group(function () {
+        Route::resource('books', BooksController::class);
+    });
+    Route::resource('/borroweds', BorrowedsController::class);
+    Route::resource('/students', StudentsController::class);
+    Route::resource('/librarians', LibrariansController::class);
+});
+
+Route::group(['prefix' => 'librarian'], function () {
+
+    Route::get('/login', [LibrariansController::class,]);
+
+    // Route::get('/', [LibrariansController::class, 'index'])->name('librarian.dashboard');
+
+    Route::resource('/books', BooksController::class);
+    Route::resource('/borroweds', BorrowedsController::class);
+    Route::resource('/students', StudentsController::class);
 });
 
 
@@ -50,3 +72,7 @@ Route::prefix('/')
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
     });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

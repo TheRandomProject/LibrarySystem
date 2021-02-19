@@ -16,7 +16,7 @@ class CreateLibrariansTable extends Migration
         Schema::create('librarians', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('username');
-            $table->string('passwrord');
+            $table->string('password');
             $table->string('email');
 
             $table->timestamps();

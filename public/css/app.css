@@ -1,5 +1,35 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+.admin-dashboard .card-icon {
+  font-size: 2.5rem;
+  text-align: center;
+  transition: transform 1.2s;
+}
+.admin-dashboard .card-icon:hover {
+  transform: scale(1.5);
+  transition: 1s;
+}
+.admin-dashboard .card-number {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+.admin-dashboard .card-title {
+  font-size: 0.8rem;
+}
+.admin-dashboard p {
+  margin: 0;
+}
+.admin-dashboard hr {
+  margin: 0.5rem;
+}
+.admin-dashboard a {
+  font-size: 1rem;
+  color: white;
+}
+.admin-dashboard a:hover {
+  color: white;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

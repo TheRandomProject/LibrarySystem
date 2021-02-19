@@ -2,20 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
-use App\Models\Book;
-use App\Models\Borrowed;
-use App\Models\Student;
-use App\Models\Librarian;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class LibrariansController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -23,15 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // Form Database
-        $books          =       Book::orderBy('created_at', 'desc')->paginate(10);
-        $borroweds      =       Borrowed::orderBy('created_at', 'desc')->paginate(10);
-        $students       =       Student::orderBy('created_at', 'desc')->paginate(10);
-        $librarians     =       Librarian::orderBy('created_at', 'desc')->paginate(10);
-        // Variables into Arrary
-        $array          =       ['books' => $books, 'borroweds' =>  $borroweds, 'students' =>  $students, 'librarians' => $librarians];
-        // Pass to the Page
-        return view('admin.dashbaord')->with($array);
+        //
     }
 
     /**
@@ -97,7 +79,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-
         //
     }
 }

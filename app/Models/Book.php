@@ -22,10 +22,6 @@ class Book extends Model
 
     protected $searchableFields = ['*'];
 
-    protected $casts = [
-        'published' => 'date',
-    ];
-
     public function borrows()
     {
         return $this->hasMany(Borrowed::class);
