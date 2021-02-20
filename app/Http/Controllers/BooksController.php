@@ -29,7 +29,7 @@ class BooksController extends Controller
         $books = Book::orderBy('created_at', 'desc')->paginate(10);
 
         // return Book::all();
-        return view('book.listbook')->with('books', $books);
+        return view('function.list.book')->with('books', $books);
     }
 
     /**
