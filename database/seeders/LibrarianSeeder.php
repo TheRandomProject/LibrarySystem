@@ -18,7 +18,10 @@ class LibrarianSeeder extends Seeder
     public function run()
     {
         DB::table('librarians')->insert([
-            'username' => 'John',
+            'username' => 'Grumbles',
+            'firstname' => 'oyuioyuio',
+            'lastname' => 'vtyvty',
+            'contact' => '789789',
             'password' => Hash::make('password'),
             'email' =>  'librarian@librarian.com',
         ]);
