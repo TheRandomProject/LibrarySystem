@@ -10,6 +10,7 @@ use App\Http\Controllers\LibrariansController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\StudentsController;
+use App\Models\Borrowed;
 use GuzzleHttp\Middleware;
 
 /*
@@ -48,12 +49,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::name('admin.')->group(function () {
         Route::resource('books', BooksController::class);
+        Route::resource('/students', StudentsController::class);
+        Route::resource('/borroweds', BorrowedsController::class);
     });
 
-    Route::name('admin.')->group(function () {
-        Route::resource('/students', StudentsController::class);
-    });
-    Route::resource('/borroweds', BorrowedsController::class);
     Route::resource('/librarians', LibrariansController::class);
 });
 

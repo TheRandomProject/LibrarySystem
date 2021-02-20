@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <hr>
-                    <a href="#">View</a>
+                    <a href="{{route('admin.borroweds.index')}}">View</a>
                 </div>
             </div>
         </div>
@@ -111,11 +111,28 @@
                     <th>Due Date</th>
                     <th>Date Taken</th>
                     <th>Request</th>
-                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-
+                    @if(count($borroweds) > 0)
+                    @foreach($borroweds as $borrowed)
+                    <tr>
+                        <td>{{$loop->iteration}}</td>
+                        <td>{{$borrowed->student->firstname}}, {{$borrowed->student->lastname}}</td>
+                        <td>{{$borrowed->book->title}}</td>
+                        <td>{{$borrowed->due_date}}</td>
+                        <td>{{$borrowed->updated_at}}</td>
+                        <td>{{$borrowed->request}}</td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <th colspan="7" class="text-center"><a href="{{route('admin.borroweds.index')}}">View</a></th>
+                    </tr>
+                @else
+                    <tr>
+                        <th colspan="7" class="text-center bg-danger text-white"> No Result </th>
+                    </tr>
+                @endif
                 </tbody>
               </table>
         </div>
