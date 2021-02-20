@@ -31,7 +31,7 @@
                             Users <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{route('admin.librarian.index')}}" class="dropdown-item">Librarian</a>
+                            <a href="{{route('admin.librarians.index')}}" class="dropdown-item">Librarian</a>
                             <a href="{{route('admin.students.index')}}" class="dropdown-item">Student</a>
                         </div>
                     </li>
