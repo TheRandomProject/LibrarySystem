@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Librarian;
 use Illuminate\Http\Request;
 
 class LibrariansController extends Controller
@@ -13,7 +14,9 @@ class LibrariansController extends Controller
      */
     public function index()
     {
-        //
+        $librarians = Librarian::orderBy('created_at', 'asc')->paginate(15);
+
+        return view('function.list.librarian')->with('librarians', $librarians);
     }
 
     /**

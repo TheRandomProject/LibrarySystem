@@ -10,11 +10,11 @@
             <thead>
             <tr>
                 <th>#</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Quantity</th>
-                <th>Genre</th>
-                <th>Published</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Username</th>
                 <th>Action</th>
             </tr>
             </thead>
