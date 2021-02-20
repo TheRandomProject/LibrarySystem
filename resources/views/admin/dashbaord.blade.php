@@ -66,7 +66,10 @@
     </div><br>
     <div class="row">
         <div class="col-md-12">
-            <button class="btn btn-primary float-right">Create</button><br><br>
+            <h4>Book List</h4>
+            <hr>
+        </div>
+        <div class="col-md-12">
             <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
@@ -102,6 +105,10 @@
               </table>
         </div>
         <div class="col-md-12">
+            <h4>Borroweds List</h4>
+            <hr>
+        </div>
+        <div class="col-md-12">
             <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
@@ -135,6 +142,10 @@
                 @endif
                 </tbody>
               </table>
+        </div>
+        <div class="col-md-12">
+            <h4>Students List</h4>
+            <hr>
         </div>
         <div class="col-md-12">
             <table class="table table-bordered table-responsive-sm">
