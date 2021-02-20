@@ -23,7 +23,7 @@ class StudentsController extends Controller
     {
         $students = Student::orderBy('created_at', 'desc')->paginate(15);
 
-        return view('admin.studentlist')->with('students', $students);
+        return view('function.list.student')->with('students', $students);
     }
 
     /**
