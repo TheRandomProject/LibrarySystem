@@ -80,7 +80,16 @@ class LibrariansController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $librarian = Librarian::find($id);
+
+        $librarian->username = $request->input('username');
+        $librarian->firstname = $request->input('firstname');
+        $librarian->lastname = $request->input('lastname');
+        $librarian->contact = $request->input('contact');
+        $librarian->email = $request->input('email');
+        $librarian->save();
+
+        return redirect()->route('admin.librarians.index')->with('success', 'Librarian Account Updated');
     }
 
     /**
