@@ -14,7 +14,9 @@ class BorrowedsController extends Controller
      */
     public function index()
     {
-        $borrowed = Borrowed::orderBy('created_at', 'asc')->pagination(15);
+        $borroweds = Borrowed::orderBy('created_at', 'asc')->paginate(15);
+
+        return view('function.list.borrowed')->with('borroweds', $borroweds);
     }
 
     /**
