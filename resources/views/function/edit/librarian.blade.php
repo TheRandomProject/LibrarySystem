@@ -3,8 +3,7 @@
 @section('content')
 
 <div class="container">
-    <h1>Student Book</h1>
-    <hr>
+
     {!! Form::open(['route' => ['admin.librarians.update', $librarian->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="row">
         <div class="col-md-12 form-group">

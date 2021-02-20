@@ -48,7 +48,6 @@ class LibrariansController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -59,7 +58,17 @@ class LibrariansController extends Controller
      */
     public function edit($id)
     {
-        //
+        $librarian = Librarian::find($id);
+
+        if (!isset($librarian)) {
+            return redirect()->route('admin.librarians.index')->with('error', 'Librarian Account NOT FOUND!');
+        }
+
+        if (!auth()->guard('admin')->check()) {
+            return redirect()->back()->with('error', 'Uanauthorized Personnel!');
+        }
+
+        return view('function.edit.librarian')->with('librarian', $librarian);
     }
 
     /**
