@@ -100,6 +100,18 @@ class LibrariansController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $librarian = Librarian::find($id);
+
+        //Check if librarian exists before deleting
+        if (!isset($librarian)) {
+            return redirect()->route('admin.librarians.index')->with('error', 'Account Not Found!');
+        }
+
+        if (!auth()->guard('admin')->check()) {
+            return redirect()->back()->with('error', 'Unauthorized Personnel!');
+        }
+
+        $librarian->delete();
+        return redirect()->route('admin.librarians.index')->with('success', 'Account Removed!');
     }
 }
