@@ -21,18 +21,18 @@
                         <a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/books" class="nav-link">Books</a>
+                        <a href="{{route('admin.books.index')}}" class="nav-link">Books</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Borrows</a>
+                        <a href="{{route('admin.borroweds.index')}}" class="nav-link">Borrows</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Users <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="#" class="dropdown-item">Librarian</a>
-                            <a href="#" class="dropdown-item">Student</a>
+                            <a href="{{route('admin.librarian.index')}}" class="dropdown-item">Librarian</a>
+                            <a href="{{route('admin.students.index')}}" class="dropdown-item">Student</a>
                         </div>
                     </li>
                 @endif
