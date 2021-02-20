@@ -75,7 +75,7 @@ class StudentsController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Personnel!');
         }
 
-        return view('admin.studentedit')->with('student', $student);
+        return view('function.edit.student')->with('student', $student);
     }
 
     /**
