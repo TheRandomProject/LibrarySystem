@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Borrowed;
 use Illuminate\Http\Request;
 
 class BorrowedsController extends Controller
@@ -13,7 +14,7 @@ class BorrowedsController extends Controller
      */
     public function index()
     {
-        //
+        $borrowed = Borrowed::orderBy('created_at', 'asc')->pagination(15);
     }
 
     /**
