@@ -29,7 +29,7 @@
                         <td>{{$librarian->contact}}</td>
                         <td>{{$librarian->username}}</td>
                         <td class="text-center">
-                            {!!Form::open(['route' => ['admin.students.destroy', $librarian->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                            {!!Form::open(['route' => ['admin.librarians.destroy', $librarian->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 <a href="/admin/librarians/{{$librarian->id}}/edit" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil"></i></a>
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i></button>
