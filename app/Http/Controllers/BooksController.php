@@ -43,7 +43,7 @@ class BooksController extends Controller
         $years = ['other'];
         for ($year = 1100; $year <= 2021; $year++) $years[$year] = $year;
 
-        return view('book.createbook', compact('genre', 'years'));
+        return view('function.create.book', compact('genre', 'years'));
     }
 
     /**

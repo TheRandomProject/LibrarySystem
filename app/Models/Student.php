@@ -16,7 +16,7 @@ class Student extends Authenticatable
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'email', 'password', 'image'];
+    protected $fillable = ['firstname', 'lastname', 'contact', 'username', 'email', 'password', 'image'];
 
     protected $searchableFields = ['*'];
 
