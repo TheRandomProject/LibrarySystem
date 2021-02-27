@@ -30,6 +30,17 @@
   color: white;
 }
 
+a {
+  text-decoration: none !important;
+}
+a .shadow-book .card-body h4 {
+  margin: 0;
+  padding: 0;
+}
+a .shadow-book:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

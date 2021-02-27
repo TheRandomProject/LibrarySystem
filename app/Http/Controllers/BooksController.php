@@ -15,7 +15,7 @@ class BooksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:admin', ['except' => ['Studentlist', 'show']]);
     }
 
     /**
@@ -99,6 +99,9 @@ class BooksController extends Controller
      */
     public function show($id)
     {
+        $books = Book::find($id);
+
+        return view('function.show.book')->with('books', $books);
     }
 
     /**
@@ -185,5 +188,16 @@ class BooksController extends Controller
 
         $book->delete();
         return redirect()->route('admin.books.index')->with('success', 'Book Removed');
+    }
+
+    public function Studentlist()
+    {
+        $books = Book::orderBy('created_at', 'asc')->paginate(10);
+        return view('function.list.books')->with('books', $books);
+    }
+
+    public function borrow(Request $request)
+    {
+        //
     }
 }

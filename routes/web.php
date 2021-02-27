@@ -67,6 +67,17 @@ Route::group(['prefix' => 'librarian'], function () {
 });
 
 
+Route::group(['prefix' => '/'], function () {
+
+
+
+    Route::name('student.')->group(function () {
+        Route::get('books', [BooksController::class, 'Studentlist'])->name('books');
+        Route::get('books/{book}', [BooksController::class, 'show'])->name('books.show');
+        Route::get('books/borrow', [BooksController::class, 'borrow'])->name('books.borrow');
+    });
+});
+
 Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
