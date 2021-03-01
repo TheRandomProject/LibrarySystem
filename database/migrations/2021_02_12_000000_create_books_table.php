@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author')->nullable();
             $table->integer('quantity');
             $table->string('cover_image');
-            $table->date('published');
+            $table->string('published');
             $table->unsignedBigInteger('genre_id');
 
             $table->timestamps();

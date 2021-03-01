@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Borrowed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+
 class BorrowedsController extends Controller
 {
     /**
@@ -48,6 +50,8 @@ class BorrowedsController extends Controller
         } else {
 
             $borrow = new Borrowed;
+            $borrow->due_date = Carbon::now();
+            $borrow->request = 'pending';
             $borrow->book_id = $request->input('book_id');
             $borrow->student_id = auth()->user()->id;
             $borrow->save();
