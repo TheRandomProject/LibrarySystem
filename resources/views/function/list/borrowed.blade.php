@@ -23,6 +23,8 @@
             <tbody>
                 @if(count($borroweds) > 0)
                     @foreach($borroweds as $borrowed)
+                    {!!Form::open(['route' => ['admin.librarians.destroy', $borrowed->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$borrowed->student->firstname}}, {{$borrowed->student->lastname}}</td>
@@ -34,14 +36,15 @@
                         <td>
                             {{$borrowed->updated_at}}
                         </td>
-                        <td class="text-center">
-                            {!!Form::open(['route' => ['admin.librarians.destroy', $borrowed->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+                        <td>
+                            <button href="/admin/librarians/{{$borrowed->id}}/edit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></button>
+
                                 {{Form::hidden('_method', 'DELETE')}}
-                                <a href="/admin/librarians/{{$borrowed->id}}/edit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></a>
                                 <button type="submit" class="btn btn-danger btn-sm" title="reject"><i class="fas fa-times"></i></button>
-                            {!!Form::close()!!}
                         </td>
                     </tr>
+                    {!!Form::close()!!}
+
                     @endforeach
                 @else
                     <tr>

@@ -43,14 +43,13 @@ class BorrowedsController extends Controller
             'book_id' => 'required'
         ]);
 
-        $check = Borrowed::where('book_id', $request->input('book_id'))->count();
+        if (Borrowed::where(['book_id' => $request->input('book_id'), 'student_id' => auth()->user()->id])->count() >= 1) {
 
-        if ($check >= 1) {
             return redirect('/books')->with('error', 'Book Ready Borrow');
         } else {
 
             $borrow = new Borrowed;
-            $borrow->due_date = Carbon::now();
+            $borrow->due_date = Carbon::now()->addDay(4);
             $borrow->request = 'pending';
             $borrow->book_id = $request->input('book_id');
             $borrow->student_id = auth()->user()->id;
