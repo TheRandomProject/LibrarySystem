@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Borrowed;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
