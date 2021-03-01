@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+@include('layouts.messages')
+
     <div class="row">
         @foreach ($books as $book)
             <div class="col-md-4 text-center">
