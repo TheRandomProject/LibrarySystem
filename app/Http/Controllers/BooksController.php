@@ -54,14 +54,14 @@ class BooksController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'author' => 'required',
-            'quantity' => 'required',
-            'published' => 'required|min:1000|max:9999',
-            'genre' => 'required',
-            'cover_image' => 'image|nullable|max:1999'
-        ]);
+        // $this->validate($request, [
+        //     'title' => 'required',
+        //     'author' => 'required',
+        //     'quantity' => 'required',
+        //     'published' => 'required|min:1000|max:9999',
+        //     'genre' => 'required',
+        //     'cover_image' => 'image|nullable|max:1999'
+        // ]);
 
         // Handle File Upload
         if ($request->hasFile('cover_image')) {
@@ -89,6 +89,9 @@ class BooksController extends Controller
         $book->genre_id = $request->input('genre');
         $book->cover_image = $fileNameToStore;
         $book->save();
+
+        return redirect('/admin/books')->with('success', 'Book Created');
+
     }
 
     /**
