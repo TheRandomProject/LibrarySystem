@@ -34,7 +34,7 @@
         </div>
         <div class="col-md-12 form-group">
             {{Form::label('quantity', 'Quantity')}}
-            {{Form::text('quantity', '', ['class' => 'form-control', 'placeholder' => 'Quantity'])}}
+            {{Form::number('quantity', '', ['class' => 'form-control', 'placeholder' => 'Quantity'])}}
         </div>
         <div class="col-md-12 form-group">
             {{Form::label('published', 'Published Date')}}

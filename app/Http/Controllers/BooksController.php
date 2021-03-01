@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Image;
 use DB;
 use App\Models\Book;
+use App\Models\Borrowed;
 use App\Models\Genre;
-
+use Illuminate\Support\Facades\Auth;
 
 
 class BooksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin', ['except' => ['Studentlist', 'show']]);
+        $this->middleware('auth:admin', ['except' => ['Studentlist', 'show', 'Borrowed']]);
     }
 
     /**
@@ -196,5 +197,13 @@ class BooksController extends Controller
     {
         $books = Book::orderBy('created_at', 'asc')->paginate(10);
         return view('function.list.books')->with('books', $books);
+    }
+
+    public function Borrowed()
+    {
+        $borroweds = Borrowed::where('student_id', auth()->user()->id)->paginate(10);
+
+
+        return view('function.list.borroweds', compact('borroweds'));
     }
 }

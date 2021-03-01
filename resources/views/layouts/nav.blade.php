@@ -17,7 +17,7 @@
                         <a href="{{route('student.books')}}" class="nav-link">Books</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Borroweds</a>
+                        <a href="{{route('student.books.borrow')}}" class="nav-link">Borroweds</a>
                     </li>
                 @elseif(Auth::guard('librarian')->check())
 

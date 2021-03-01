@@ -7,7 +7,7 @@
 
     <div class="row">
         @foreach ($books as $book)
-            <div class="col-md-4 text-center">
+            <div class="col-md-4 text-center mb-4">
                 <a href="/books/{{$book->id}}">
                     <div class="card shadow-book " style="width:300px">
                         <img class="card-img-top" src="/storage/cover_images/{{$book->cover_image}}" alt="Card image" style="height:340px">
