@@ -91,7 +91,6 @@ class BooksController extends Controller
         $book->save();
 
         return redirect('/admin/books')->with('success', 'Book Created');
-
     }
 
     /**
@@ -197,10 +196,5 @@ class BooksController extends Controller
     {
         $books = Book::orderBy('created_at', 'asc')->paginate(10);
         return view('function.list.books')->with('books', $books);
-    }
-
-    public function borrow(Request $request)
-    {
-        //
     }
 }
