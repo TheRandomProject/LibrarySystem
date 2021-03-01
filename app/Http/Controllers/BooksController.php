@@ -129,7 +129,7 @@ class BooksController extends Controller
             return redirect()->back()->with('error', 'Unauthorized Book');
         }
 
-        return view('book.edit', compact('book', 'genre',));
+        return view('function.edit.book', compact('book', 'genre',));
     }
 
     /**
