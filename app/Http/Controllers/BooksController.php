@@ -103,8 +103,8 @@ class BooksController extends Controller
     public function show($id)
     {
         $books = Book::find($id);
-
-        return view('function.show.book')->with('books', $books);
+        $borrow = Borrowed::all();
+        return view('function.show.book', compact('books', 'borrow'));
     }
 
     /**
@@ -202,7 +202,6 @@ class BooksController extends Controller
     public function Borrowed()
     {
         $borroweds = Borrowed::where('student_id', auth()->user()->id)->paginate(10);
-
 
         return view('function.list.borroweds', compact('borroweds'));
     }

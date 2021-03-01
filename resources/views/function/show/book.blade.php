@@ -18,11 +18,17 @@
     </div>
     <hr>
     <div class="float-right">
+        @if (count($borrow) >= $books->quantity)
+            <a href="/books" class="btn btn-primary">Back</a>
+            <button type="button" class="btn btn-primary" disabled>Borrow</button>
+        @else
         {!! Form::open(['action' => 'BorrowedsController@store', 'method' => 'POST', 'enctype' => 'mutipart/form-data']) !!}
             <a href="/books" class="btn btn-primary">Back</a>
             {!! Form::hidden('book_id', $books->id) !!}
             {!! Form::submit('Borrow', ['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}
+        @endif
+
     </div>
 </div>
 @endsection
