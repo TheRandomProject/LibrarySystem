@@ -24,6 +24,5 @@
             {!! Form::submit('Borrow', ['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
-
 </div>
 @endsection
