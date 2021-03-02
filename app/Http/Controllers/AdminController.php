@@ -28,8 +28,11 @@ class AdminController extends Controller
         $borroweds      =       Borrowed::orderBy('created_at', 'desc')->paginate(10);
         $students       =       Student::orderBy('created_at', 'desc')->paginate(10);
         $librarians     =       Librarian::orderBy('created_at', 'desc')->paginate(10);
+        $countbooks = Book::all();
+        $countborroweds = Borrowed::all();
+        $countstudents = Student::all();
         // Variables into Arrary
-        $array          =       ['books' => $books, 'borroweds' =>  $borroweds, 'students' =>  $students, 'librarians' => $librarians];
+        $array          =       ['books' => $books, 'borroweds' =>  $borroweds, 'students' =>  $students, 'librarians' => $librarians, 'countbooks' => $countbooks, 'countborroweds' => $countborroweds, 'countstudents' => $countstudents];
         // Pass to the Page
         return view('admin.dashbaord')->with($array);
     }
