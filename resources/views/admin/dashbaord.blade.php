@@ -16,7 +16,7 @@
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
-                            <p class="card-number">{{count($books)}}</p>
+                            <p class="card-number">{{count($countbooks)}}</p>
                             <p class="card-title">Book</p>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
-                            <p class="card-number">{{count($borroweds)}}</p>
+                            <p class="card-number">{{count($countborroweds)}}</p>
                             <p class="card-title">Borrowed</p>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="col-7 col-md-8">
-                            <p class="card-number">{{count($students)}}</p>
+                            <p class="card-number">{{count($countstudents)}}</p>
                             <p class="card-title">Student</p>
                         </div>
                     </div>
