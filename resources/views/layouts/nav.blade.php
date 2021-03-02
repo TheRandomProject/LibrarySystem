@@ -36,7 +36,6 @@
                             Users <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a href="{{route('admin.librarians.index')}}" class="dropdown-item">Librarian</a>
                             <a href="{{route('admin.students.index')}}" class="dropdown-item">Student</a>
                         </div>
                     </li>
@@ -90,7 +89,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="#" class="dropdown-item">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
