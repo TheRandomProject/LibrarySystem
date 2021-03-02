@@ -102,6 +102,13 @@ class BorrowedsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $borrow = Borrowed::find($id);
+
+        if(!isset($borrow)){
+            return redirect()->route('admin.borroweds.index')->with('error', 'No Borrowed Found');
+        }
+
+        $borrow->delete();
+        return redirect()->route('admin.borroweds.index')->with('success', 'Deleted Borrowed!');
     }
 }
