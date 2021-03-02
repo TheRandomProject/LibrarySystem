@@ -46,5 +46,6 @@
         </table>
     </div>
 </div>
+{{$students->links()}}
 </div>
 @endsection
