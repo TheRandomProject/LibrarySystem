@@ -17,14 +17,17 @@
             </tr>
             </thead>
             <tbody>
-                @if(count($borroweds) > 0)
+
+                @if(count($borroweds) >= 0)
                     @foreach($borroweds as $borrowed)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$borrowed->book->title}}</td>
                             <td>{{$borrowed->request}}</td>
                             <td>{{$borrowed->created_at}}</td>
-                            <td>{{$borrowed->updated_at}}</td>
+                            <td>
+                                {{$borrowed->updated_at}}
+                            </td>
                         </tr>
                     @endforeach
                 @else

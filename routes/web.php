@@ -12,7 +12,6 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\StudentsController;
 use App\Models\Borrowed;
 use GuzzleHttp\Middleware;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +24,7 @@ use GuzzleHttp\Middleware;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -85,6 +84,5 @@ Route::prefix('/')
         Route::resource('permissions', PermissionController::class);
     });
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
