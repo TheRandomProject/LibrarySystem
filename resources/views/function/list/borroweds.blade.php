@@ -26,7 +26,14 @@
                             <td>{{$borrowed->request}}</td>
                             <td>{{$borrowed->created_at}}</td>
                             <td>
-                                {{$borrowed->updated_at}}
+                                @php
+                                if($borrowed->created_at == $borrowed->updated_at){
+                                    echo 'ew';
+                                } else {
+                                   echo $borrowed->updated_at;
+                                }
+
+                                @endphp
                             </td>
                         </tr>
                     @endforeach
