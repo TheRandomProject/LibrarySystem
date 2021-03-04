@@ -34,12 +34,19 @@
                                 <td> </td>
                                 <td>{{$borrowed->request}}</td>
                                 <td>
-                                    {!! Form::open(['route' => ['admin.borroweds.update', $borrowed->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                    <div class="d-flex justify-content-around">
+                                        {!! Form::open(['route' => ['admin.borroweds.update', $borrowed->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                                         <input type="hidden" name="request" value="Taken">
                                         {{Form::hidden('_method','PUT')}}
-                                        <button type="submit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></button>
+                                        <button type="submit" class="btn btn-primary btn-sm mr-1" title="approve"><i class="fas fa-check"></i> Take</button>
                                     {!!Form::close()!!}
-                                    <button type="submit" class="btn btn-danger btn-sm" title="reject"><i class="fas fa-times"></i></button>
+
+                                    {!! Form::open() !!}
+                                    <button type="submit" class="btn btn-secondary btn-sm" title="reject"><i class="fas fa-times"></i>Reject</button>
+
+                                    {!! Form::close() !!}
+                                    </div>
+
                                 </td>
                             </tr>
                         @else
@@ -52,8 +59,8 @@
                                 <td>{{$borrowed->created_at}}</td>
                                 <td>{{$borrowed->updated_at}}</td>
                                 <td>{{$borrowed->request}}</td>
-                                <td>
-                                    <button type="submit" class="btn btn-danger btn-sm" title="reject"><i class="fas fa-times"></i></button>
+                                <td class="text-center">
+                                    <button type="submit" class="btn btn-success btn-sm" title="return"><i class="fas fa-undo-alt"></i> Return</button>
                                 </td>
                             </tr>
                         @endif
