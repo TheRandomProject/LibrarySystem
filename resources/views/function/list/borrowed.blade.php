@@ -14,9 +14,9 @@
                 <th>Borrowed Book</th>
                 <th>Email</th>
                 <th>Contact</th>
-                <th>request</th>
                 <th>Date Request</th>
                 <th>Date Taken</th>
+                <th>Request</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -57,7 +57,6 @@
                                 </td>
                             </tr>
                         @endif
-
                     @endforeach
                 @else
                     <tr>
