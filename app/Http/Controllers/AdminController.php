@@ -24,10 +24,10 @@ class AdminController extends Controller
     public function index()
     {
         // Form Database
-        $books          =       Book::orderBy('created_at', 'desc')->paginate(10);
-        $borroweds      =       Borrowed::orderBy('request', 'desc')->paginate(10);
-        $students       =       Student::orderBy('created_at', 'desc')->paginate(10);
-        $librarians     =       Librarian::orderBy('created_at', 'desc')->paginate(10);
+        $books          =       Book::orderBy('created_at', 'desc')->paginate(5);
+        $borroweds      =       Borrowed::orderBy('request', 'desc')->paginate(5);
+        $students       =       Student::orderBy('created_at', 'desc')->paginate(5);
+        $librarians     =       Librarian::orderBy('created_at', 'desc')->paginate(5);
 
         $countbooks = Book::all();
         $countborroweds = Borrowed::all();
