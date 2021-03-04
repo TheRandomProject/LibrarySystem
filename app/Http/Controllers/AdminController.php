@@ -25,9 +25,10 @@ class AdminController extends Controller
     {
         // Form Database
         $books          =       Book::orderBy('created_at', 'desc')->paginate(10);
-        $borroweds      =       Borrowed::orderBy('created_at', 'desc')->paginate(10);
+        $borroweds      =       Borrowed::orderBy('request', 'desc')->paginate(10);
         $students       =       Student::orderBy('created_at', 'desc')->paginate(10);
         $librarians     =       Librarian::orderBy('created_at', 'desc')->paginate(10);
+
         $countbooks = Book::all();
         $countborroweds = Borrowed::all();
         $countstudents = Student::all();

@@ -23,27 +23,47 @@
             <tbody>
                 @if(count($borroweds) > 0)
                     @foreach($borroweds as $borrowed)
-                    <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$borrowed->student->firstname}}, {{$borrowed->student->lastname}}</td>
-                        <td>{{$borrowed->book->title}}</td>
-                        <td>{{$borrowed->student->email}}</td>
-                        <td>{{$borrowed->student->contact}}</td>
-                        <td>{{$borrowed->request}}</td>
-                        <td>{{$borrowed->created_at}}</td>
-                        <td>
-                            {{$borrowed->updated_at}}
-                        </td>
-                        <td>
-                            <button href="/admin/librarians/{{$borrowed->id}}/edit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></button>
-                                {!!Form::open(['route' => ['admin.borroweds.destroy', $borrowed->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                    {{Form::hidden('_method', 'DELETE')}}
+                        @if ($borrowed->created_at == $borrowed->updated_at)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$borrowed->student->firstname}}, {{$borrowed->student->lastname}}</td>
+                                <td>{{$borrowed->book->title}}</td>
+                                <td>{{$borrowed->student->email}}</td>
+                                <td>{{$borrowed->student->contact}}</td>
+                                <td>{{$borrowed->request}}</td>
+                                <td>{{$borrowed->created_at}}</td>
+                                <td> </td>
+                                <td>
+                                    {!! Form::open(['route' => ['admin.borroweds.update', $borrowed->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                        <input type="hidden" name="request" value="approve">
+                                        {{Form::hidden('_method','PUT')}}
+                                        <button type="submit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></button>
+                                    {!!Form::close()!!}
                                     <button type="submit" class="btn btn-danger btn-sm" title="reject"><i class="fas fa-times"></i></button>
-                                {!!Form::close()!!}
-
-                        </td>
-                    </tr>
-
+                                </td>
+                            </tr>
+                        @else
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$borrowed->student->firstname}}, {{$borrowed->student->lastname}}</td>
+                                <td>{{$borrowed->book->title}}</td>
+                                <td>{{$borrowed->student->email}}</td>
+                                <td>{{$borrowed->student->contact}}</td>
+                                <td>{{$borrowed->request}}</td>
+                                <td>{{$borrowed->created_at}}</td>
+                                <td>
+                                    {{$borrowed->updated_at}}
+                                </td>
+                                <td>
+                                    {!! Form::open(['route' => ['admin.borroweds.update', $borrowed->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                                        <input type="hidden" name="request" value="approve">
+                                        {{Form::hidden('_method','PUT')}}
+                                        <button type="submit" class="btn btn-primary btn-sm" title="approve"><i class="fas fa-check"></i></button>
+                                    {!!Form::close()!!}
+                                    <button type="submit" class="btn btn-danger btn-sm" title="reject"><i class="fas fa-times"></i></button>
+                                </td>
+                            </tr>
+                        @endif
 
                     @endforeach
                 @else
