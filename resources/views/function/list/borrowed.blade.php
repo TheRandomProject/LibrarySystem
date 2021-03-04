@@ -41,9 +41,9 @@
                                         <button type="submit" class="btn btn-primary btn-sm mr-1" title="approve"><i class="fas fa-check"></i> Take</button>
                                     {!!Form::close()!!}
 
-                                    {!! Form::open() !!}
-                                    <button type="submit" class="btn btn-secondary btn-sm" title="reject"><i class="fas fa-times"></i>Reject</button>
-
+                                    {!! Form::open(['route' => ['admin.borroweds.destroy', $borrowed->id], 'method' => 'POST']) !!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="submit" class="btn btn-secondary btn-sm" title="reject"><i class="fas fa-times"></i>Reject</button>
                                     {!! Form::close() !!}
                                     </div>
 
@@ -60,7 +60,10 @@
                                 <td>{{$borrowed->updated_at}}</td>
                                 <td>{{$borrowed->request}}</td>
                                 <td class="text-center">
-                                    <button type="submit" class="btn btn-success btn-sm" title="return"><i class="fas fa-undo-alt"></i> Return</button>
+                                    {!! Form::open(['route' => ['admin.borroweds.destroy', $borrowed->id], 'method' => 'POST']) !!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        <button type="submit" class="btn btn-success btn-sm" title="return"><i class="fas fa-undo-alt"></i> Return</button>
+                                    {!! Form::close() !!}
                                 </td>
                             </tr>
                         @endif
