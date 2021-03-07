@@ -17,7 +17,7 @@ class BorrowedsController extends Controller
      */
     public function index()
     {
-        $borroweds = Borrowed::orderBy('created_at', 'asc')->paginate(15);
+        $borroweds = Borrowed::orderBy('request', 'desc')->paginate(15);
 
         return view('function.list.borrowed')->with('borroweds', $borroweds);
     }
@@ -91,7 +91,16 @@ class BorrowedsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'request' => 'required'
+        ]);
+
+        $borrow = Borrowed::find($id);
+
+        $borrow->request = $request->input('request');
+        $borrow->save();
+
+        return redirect()->back()->with('success', 'Approve');
     }
 
     /**
@@ -104,7 +113,7 @@ class BorrowedsController extends Controller
     {
         $borrow = Borrowed::find($id);
 
-        if(!isset($borrow)){
+        if (!isset($borrow)) {
             return redirect()->route('admin.borroweds.index')->with('error', 'No Borrowed Found');
         }
 

@@ -17,14 +17,24 @@
             </tr>
             </thead>
             <tbody>
-                @if(count($borroweds) > 0)
+
+                @if(count($borroweds) >= 0)
                     @foreach($borroweds as $borrowed)
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$borrowed->book->title}}</td>
                             <td>{{$borrowed->request}}</td>
                             <td>{{$borrowed->created_at}}</td>
-                            <td>{{$borrowed->updated_at}}</td>
+                            <td>
+                                @php
+                                if($borrowed->created_at == $borrowed->updated_at){
+                                    echo 'ew';
+                                } else {
+                                   echo $borrowed->updated_at;
+                                }
+
+                                @endphp
+                            </td>
                         </tr>
                     @endforeach
                 @else
