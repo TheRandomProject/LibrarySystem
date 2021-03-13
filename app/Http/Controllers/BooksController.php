@@ -204,4 +204,17 @@ class BooksController extends Controller
 
         return view('function.list.borroweds', compact('borroweds'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('query');
+
+        $books = Book::where('id', 'like', '%' . $search . '%')
+            ->orWhere('title', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->orWhere('published', 'like', '%' . $search . '%')
+            ->paginate(10);
+
+        return view('function.list.book', compact('books'));
+    }
 }
