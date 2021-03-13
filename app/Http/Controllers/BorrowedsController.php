@@ -7,6 +7,8 @@ use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use DB;
 
 class BorrowedsController extends Controller
 {
@@ -119,5 +121,29 @@ class BorrowedsController extends Controller
 
         $borrow->delete();
         return redirect()->route('admin.borroweds.index')->with('success', 'Deleted Borrowed!');
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
+
+    public function book()
+    {
+        return $this->belongsTo(Book::class);
+    }
+
+    public function search(Request $request)
+    {
+
+        $search = $request->input('query');
+        $borroweds = Borrowed::where('id', 'like', '%' . $search . '%')
+            ->orWhere('request', 'like', '%' . $search . '%')
+            ->orWhere('due_date', 'like', '%' . $search . '%')
+            // ->orWhere($book->title, 'like', '%' . $search . '%')
+            ->paginate(10);
+
+
+        return view('function.list.borrowed', compact('borroweds'));
     }
 }

@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <h1>Books List</h1>
+    <hr>
     <div class="row">
         <div class="col-md-12">
             <a href="{{route('admin.books.create')}}" class="btn btn-primary float-right">Create</a><br><br>

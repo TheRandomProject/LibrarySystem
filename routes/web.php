@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/books/search', [BooksController::class, 'search'])->name('books.search');
         Route::resource('books', BooksController::class);
         Route::resource('/students', StudentsController::class);
+        Route::get('/borroweds/search', [BorrowedsController::class, 'search'])->name('borroweds.search');
         Route::resource('/borroweds', BorrowedsController::class);
         Route::resource('/librarians', LibrariansController::class);
     });

@@ -11,7 +11,12 @@ class Borrowed extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['due_date', 'request', 'student_id', 'book_id'];
+    protected $fillable = [
+        'due_date',
+        'request',
+        'student_id',
+        'book_id'
+    ];
 
     protected $searchableFields = ['*'];
 

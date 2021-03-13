@@ -5,6 +5,10 @@
 <h1>Borrowed List</h1>
 <hr>
 <div class="row">
+    <form class="card-body" action="{{route('admin.borroweds.search')}}" method="GET" role="search">
+        <input type="text" class="form-control" placeholder="Search Borrowed" name="query">
+    </form>
+
     <div class="col-md-12">
         <table class="table table-bordered table-responsive-sm">
             <thead>
@@ -70,7 +74,7 @@
                     @endforeach
                 @else
                     <tr>
-                        <th colspan="7" class="text-center bg-danger text-white"> No Result </th>
+                        <th colspan="9" class="text-center bg-danger text-white"> No Result </th>
                     </tr>
                 @endif
             </tbody>
