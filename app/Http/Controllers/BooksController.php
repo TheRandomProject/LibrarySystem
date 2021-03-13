@@ -16,7 +16,7 @@ class BooksController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin', ['except' => ['Studentlist', 'show', 'Borrowed']]);
+        $this->middleware('auth:admin', ['except' => ['Studentlist', 'show', 'Borrowed', 'searchbystudent']]);
     }
 
     /**
@@ -216,5 +216,18 @@ class BooksController extends Controller
             ->paginate(10);
 
         return view('function.list.book', compact('books'));
+    }
+
+    public function searchbystudent(Request $request)
+    {
+        $search = $request->input('query');
+
+        $books = Book::where('id', 'like', '%' . $search . '%')
+            ->orWhere('title', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->orWhere('published', 'like', '%' . $search . '%')
+            ->paginate(10);
+
+        return view('function.list.books', compact('books', 'search'));
     }
 }
