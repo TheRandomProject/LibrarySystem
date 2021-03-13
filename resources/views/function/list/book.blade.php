@@ -3,7 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
+
         <div class="col-md-12">
+            <form class="card-body" action="{{route('admin.books.search')}}" method="GET" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." name="query">
+                    <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Go!</button>
+              </span>
+                </div>
+            </form>
             <a href="{{route('admin.books.create')}}" class="btn btn-primary float-right">Create</a><br><br>
             <table class="table table-bordered table-responsive-sm">
                 <thead>
