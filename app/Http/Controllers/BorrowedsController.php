@@ -123,16 +123,6 @@ class BorrowedsController extends Controller
         return redirect()->route('admin.borroweds.index')->with('success', 'Deleted Borrowed!');
     }
 
-    public function student()
-    {
-        return $this->belongsTo(Student::class);
-    }
-
-    public function book()
-    {
-        return $this->belongsTo(Book::class);
-    }
-
     public function search(Request $request)
     {
 
