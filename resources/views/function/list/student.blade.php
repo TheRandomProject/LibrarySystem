@@ -4,7 +4,13 @@
 <div class="container">
 <h1>Student List</h1>
 <hr>
+
 <div class="row">
+    <div class="col-md-12">
+        <form class="card-body" action="{{route('admin.students.search')}}" method="GET" role="search">
+            <input type="text" class="form-control" placeholder="Search Borrowed" name="query" value="@isset($search) {{$search}} @endisset">
+        </form>
+    </div>
     <div class="col-md-12">
         <table class="table table-bordered table-responsive-sm">
             <thead>

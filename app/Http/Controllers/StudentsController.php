@@ -138,4 +138,20 @@ class StudentsController extends Controller
         $book->delete();
         return redirect()->route('admin.students.index')->with('success', 'Book Removed');
     }
+
+    public function search(Request $request)
+    {
+
+        $search = $request->input('query');
+        $students = Student::where('id', 'like', '%' . $search . '%')
+            ->orWhere('firstname', 'like', '%' . $search . '%')
+            ->orWhere('lastname', 'like', '%' . $search . '%')
+            ->orWhere('email', 'like', '%' . $search . '%')
+            ->orWhere('contact', 'like', '%' . $search . '%')
+            ->orWhere('username', 'like', '%' . $search . '%')
+            ->paginate(10);
+
+
+        return view('function.list.student', compact('students', 'search'));
+    }
 }
