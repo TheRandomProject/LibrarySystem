@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
 
     Route::name('admin.')->group(function () {
+        Route::get('/books/search', [BooksController::class, 'search'])->name('books.search');
         Route::resource('books', BooksController::class);
         Route::resource('/students', StudentsController::class);
         Route::resource('/borroweds', BorrowedsController::class);
