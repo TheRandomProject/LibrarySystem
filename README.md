@@ -12,7 +12,7 @@ password: password
 
 <hr>
 
-<a href="http://secret-ocean-04762.herokuapp.com/">View Webiste</a>
+<a href="http://secret-ocean-04762.herokuapp.com/">View Webiste</a> <br>
 <a href="http://secret-ocean-04762.herokuapp.com/admin">Admin Side</a>
 
 # Functionality
